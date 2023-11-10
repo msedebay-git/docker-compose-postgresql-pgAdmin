@@ -2,7 +2,7 @@ version: '3'
 services:
 
   postgres:
-    image: elestio4test/postgres:${SOFTWARE_VERSION_TAG}
+    image: postgres:${SOFTWARE_VERSION_TAG}
     restart: always
     #command: -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
     environment:
@@ -16,7 +16,7 @@ services:
       - '172.17.0.1:5432:5432'
 
   pgadmin4:
-    image: dpage/pgadmin4:latest
+    image: elestio4test/pgadmin:${SOFTWARE_VERSION_TAG}
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL}
