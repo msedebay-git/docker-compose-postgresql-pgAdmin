@@ -3,6 +3,9 @@ mkdir -p ./pgadmin;
 chown -R 1001:1001 ./data;
 chown -R 1001:1001 ./pgadmin;
 
+mkdir -p ./pgadmin
+chown -R 5050:5050 ./pgadmin
+
 cat <<EOT > ./servers.json
 {
     "Servers": {

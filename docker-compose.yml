@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 services:
   postgres:
-    image: postgres:${SOFTWARE_VERSION_TAG}
+    image: elestio/postgres:${SOFTWARE_VERSION_TAG}
     shm_size: 1g
-    container_name: postgres    
+    container_name: postgres
     restart: always
     #command: -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
     environment:
@@ -15,11 +15,11 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:
-      - '172.17.0.1:5432:5432'
+      - "172.17.0.1:5432:5432"
 
   pgadmin4:
-    image: dpage/pgadmin4:latest
-    container_name: pgadmin4
+    image: elestio/pgadmin:latest
+    container_name: pgadmin
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL}
@@ -29,3 +29,4 @@ services:
       - "172.17.0.1:8080:8080"
     volumes:
       - ./servers.json:/pgadmin4/servers.json
+      - ./pgadmin:/var/lib/pgadmin
